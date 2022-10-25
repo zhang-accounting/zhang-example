@@ -1,0 +1,20 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Kilerd Chan", email = "blove694@gmail.com"},
+]
+dependencies = [
+    "fire>=0.4.0",
+    "arrow>=1.2.3",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]
