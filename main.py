@@ -6,6 +6,7 @@ from random import randint
 from pprint import pprint
 
 COMMODITIES = ["CNY", "USD"]
+COMMODITIES_SYMBOL = ["¥", "$"]
 
 COMPANY = 'GrandLordCompany'
 
@@ -83,9 +84,10 @@ class Cli:
 
         content.append("\n")
         # init currency
-        for commodity in COMMODITIES:
+        for idx, commodity in enumerate(COMMODITIES):
             content.append(f"{beginning_format} commodity {commodity}")
             content.append("  precision: 2")
+            content.append(f"  prefix: \"{COMMODITIES_SYMBOL[idx]}\"")
         
         content.append("\n")
 
