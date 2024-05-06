@@ -1,9 +1,12 @@
+import os
 import fire
 import arrow
 import random
 import calendar
 from random import randint
 from pprint import pprint
+import uuid
+import shutil
 
 COMMODITIES = ["CNY", "USD"]
 COMMODITIES_SYMBOL = ["¥", "$"]
@@ -84,6 +87,10 @@ BUDGETS_MAPPING ={
     "Clothing": "shopping",
     "Sport": "habit"
 }
+
+IMAGES = [
+    "1.jpeg", "2.jpg"
+]
 
 
 def random_in_list(l):
@@ -197,6 +204,14 @@ class Cli:
                         content.append(f"{target_time} \"{random_in_list(payee)}\" \"{random_in_list(narration)}\"")
                         for [posting, amount_executor] in postings:
                             content.append(f"  {random_in_list(posting)} {amount_executor()}")
+
+                        if random.randint(0, 59) < 10:
+                            # add image
+                            image_uuid = uuid.uuid4()
+                            target_image = random.choice(IMAGES)
+                            os.makedirs(f"data/attachments/{image_uuid}")
+                            shutil.copy(f"images/{target_image}", f"data/attachments/{image_uuid}/{target_image}")
+                            content.append(f"  document: \"attachments/{image_uuid}/{target_image}\"")
 
                         content.append("\n")
 
