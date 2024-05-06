@@ -25,8 +25,9 @@ COPY . /project
 WORKDIR /project
 # set command/entrypoint, adapt to fit your needs
 RUN python main.py  run > /data/main.zhang
+RUN mv /project/data/attachments /data/attachments
 
 
 FROM kilerd/zhang:snapshot
-COPY --from=demo-build /data /data
+COPY --from=demo-build --chmod=777 /data /data
 EXPOSE 8000

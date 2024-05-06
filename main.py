@@ -166,7 +166,6 @@ class Cli:
             content.append(f"  category: \"{budget[2]}\"")
             content.append(f"\n")
 
-
         # loop month
         content.append("\n")
         for month_offset in [-3, -2, -1, 0]:
