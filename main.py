@@ -8,8 +8,13 @@ from pprint import pprint
 import uuid
 import shutil
 
+
+DEFINED_COMMODITIES= [
+    ("CNY", "Fiat currencies", "¥"), ("USD", "Fiat currencies", "$"), ("EUR", "Fiat currencies"),
+    ("BTC", "Crypto currencies"), ("ETH", "Crypto currencies"), ("SOL", "Crypto currencies"),
+    ("AAPL", "Stock"), ("NVDA", "Stock"), ("AMD", "Stock")
+]
 COMMODITIES = ["CNY", "USD"]
-COMMODITIES_SYMBOL = ["¥", "$"]
 
 COMPANY = 'GrandLordCompany'
 
@@ -109,10 +114,13 @@ class Cli:
 
         content.append("\n")
         # init currency
-        for idx, commodity in enumerate(COMMODITIES):
-            content.append(f"{beginning_format} commodity {commodity}")
+        for commodity in DEFINED_COMMODITIES:
+
+            content.append(f"{beginning_format} commodity {commodity[0]}")
             content.append("  precision: 2")
-            content.append(f"  prefix: \"{COMMODITIES_SYMBOL[idx]}\"")
+            content.append(f"  group: \"{commodity[1]}\"")
+            if len(commodity) >2 :
+                content.append(f"  prefix: \"{commodity[2]}\"")
 
         content.append("\n")
 
