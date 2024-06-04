@@ -29,10 +29,6 @@ RUN mv /project/data/attachments /data/attachments
 
 
 FROM kilerd/zhang:snapshot
-COPY --from=demo-build --chmod=777 /data /data
-
-RUN chmod -R go+r /data
-RUN useradd -u 8877 zhang
-USER zhang
+COPY --from=demo-build --chmod=444 /data /data
 
 EXPOSE 8000
